@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
@@ -8,7 +7,7 @@ import sys
 current_date = datetime.now().date()
 
 # read in latest covid data
-covid_data = pd.read_csv('/Users/mateowheeler/Documents/covid data/covid_19_data.csv')
+covid_data = pd.read_csv('/Users/mateowheeler/covid-hacking-data')
 
 # temp explicit subsets
 covid_us = covid_data.where(covid_data['Country/Region']=='US')
