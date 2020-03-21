@@ -1,5 +1,7 @@
 # covid-hacking-data
-vizzing covid data with Plotly
+Vizzing Covid-19 data with Plotly
+
+Data source: https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset#covid_19_data.csv
 
 Global level data is summarized below:
 
