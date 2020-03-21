@@ -7,7 +7,7 @@ import sys
 current_date = datetime.now().date()
 
 # read in latest covid data
-covid_data = pd.read_csv('/Users/mateowheeler/covid-hacking-data')
+covid_data = pd.read_csv('/Users/mateowheeler/covid-hacking-data/covid-hacking-data/covid_19_data.csv')
 
 # temp explicit subsets
 covid_us = covid_data.where(covid_data['Country/Region']=='US')
