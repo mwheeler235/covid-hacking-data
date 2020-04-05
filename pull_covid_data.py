@@ -21,6 +21,7 @@ covid_iran = covid_data.where(covid_data['Country/Region']=='Iran')
 covid_spain = covid_data.where(covid_data['Country/Region']=='Spain')
 covid_france = covid_data.where(covid_data['Country/Region']=='France')
 covid_swiss = covid_data.where(covid_data['Country/Region']=='Switzerland')
+covid_uk = covid_data.where(covid_data['Country/Region']=='UK')
 
 # Create array of all countries in data
 cntry_array = covid_data["Country/Region"].unique()
@@ -43,6 +44,7 @@ daily_iran, daily_confirmed_iran= group_daily(covid_iran)
 daily_france, daily_confirmed_france = group_daily(covid_france)
 daily_spain, daily_confirmed_spain = group_daily(covid_spain)
 daily_swiss, daily_confirmed_swiss = group_daily(covid_swiss)
+daily_uk, daily_confirmed_uk = group_daily(covid_uk)
 
 # Avg Daily Case growth globally and by country
 def daily_percent_change(df):
@@ -78,10 +80,13 @@ spain_case_pct_change['Country']='Spain'
 swiss_case_pct_change = daily_percent_change(daily_confirmed_swiss)
 swiss_case_pct_change['Country']='Switzerland'
 
+uk_case_pct_change = daily_percent_change(daily_confirmed_uk)
+uk_case_pct_change['Country']='UK'
+
 
 # Stack all percent change data
 pdList = [global_case_pct_change, us_case_pct_change, china_case_pct_change, italy_case_pct_change, s_korea_case_pct_change, 
-germany_case_pct_change, iran_case_pct_change,france_case_pct_change,spain_case_pct_change,swiss_case_pct_change]
+germany_case_pct_change, iran_case_pct_change,france_case_pct_change,spain_case_pct_change,swiss_case_pct_change, uk_case_pct_change]
 perc_chg_stacked = pd.concat(pdList)
 
 perc_chg_avg = perc_chg_stacked.groupby('Country')['Confirmed'].mean()
