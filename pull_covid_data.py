@@ -90,7 +90,7 @@ germany_case_pct_change, iran_case_pct_change,france_case_pct_change,spain_case_
 perc_chg_stacked = pd.concat(pdList)
 
 perc_chg_avg = perc_chg_stacked.groupby('Country')['Confirmed'].mean()
-print(perc_chg_avg.head(10))
+print(perc_chg_avg.head(20))
 #def avg_daily_perc_chg(df):
 
 perc_chg_stacked.to_csv('/Users/mateowheeler/covid-hacking-data/covid-hacking-data/perc_chg_stacked.csv')
