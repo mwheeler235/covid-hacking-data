@@ -7,7 +7,7 @@ import sys
 current_date = datetime.now().date()
 
 # read in latest covid data
-covid_data = pd.read_csv('/Users/mateowheeler/covid-hacking-data/covid-hacking-data/covid_19_data.csv')
+covid_data = pd.read_csv('covid_19_data.csv')
 
 covid_data['Confirmed'] = (covid_data['Confirmed']).astype(int)
 
@@ -93,9 +93,11 @@ perc_chg_avg = perc_chg_stacked.groupby('Country')['Confirmed'].mean()
 print(perc_chg_avg.head(20))
 #def avg_daily_perc_chg(df):
 
-perc_chg_stacked.to_csv('/Users/mateowheeler/covid-hacking-data/covid-hacking-data/perc_chg_stacked.csv')
+perc_chg_stacked.to_csv('perc_chg_stacked.csv')
 
 sys.exit()
+
+
 
 def plot_perc_chg_bars(df, country):
 
