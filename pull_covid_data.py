@@ -8,8 +8,8 @@ current_date = datetime.now().date()
 
 # read in latest covid data
 covid_data = pd.read_csv('covid_19_data.csv')
-
 covid_data['Confirmed'] = (covid_data['Confirmed']).astype(int)
+
 
 # temp explicit subsets
 covid_us = covid_data.where(covid_data['Country/Region']=='US')
@@ -94,6 +94,20 @@ print(perc_chg_avg.head(20))
 #def avg_daily_perc_chg(df):
 
 perc_chg_stacked.to_csv('perc_chg_stacked.csv')
+
+# Compute Daily Deaths and Daily Cases for Country/State
+covid_data2 = covid_data
+covid_data2.set_index(['Country/Region','Province/State','ObservationDate'], inplace=True)
+covid_data2.sort_index(inplace=True)
+covid_data2['DailyDeaths'] = np.nan
+covid_data2['DailyConfirmed'] = np.nan 
+
+for idx in covid_data2.index.levels[0]:
+    covid_data2.DailyDeaths[idx] = covid_data2.Deaths[idx].diff()
+    covid_data2.DailyConfirmed[idx] = covid_data2.Confirmed[idx].diff()
+
+covid_data2.to_csv('covid_19_data_rev.csv')
+
 
 sys.exit()
 
